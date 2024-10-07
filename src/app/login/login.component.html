@@ -1,0 +1,50 @@
+<div class="row loginRow">
+    <div class="col leftsidelogin">
+        <img class="backImage" src="/assets/images/a0d1013d36e21f2381ef822d0e1d387b.png" alt="">
+        <div class="text">
+            <p class="title">Iniciar sesión</p>
+            <p class="bodyText">Nos alegra tenerte de vuelta y estamos listos para atender tus necesidades. Inicia sesión y continúa aprovechando al máximo nuestra plataforma.</p>
+            <div class="monitoreoIntegral">
+                <img src="\assets\images\monitor_icon.svg" alt="">
+                <div>
+                    <p class="monitoreoTitle">Monitoreo integral</p>
+                    <p class="monitoreoText">Administra, monitorea mutiples plantas de forma centralizada</p>
+                </div>
+            </div>
+            <div class="monitoreoIntegral">
+                <img src="/assets/images/star_icon.svg" alt="">
+                <div>
+                    <p class="monitoreoTitle">Notificaciones en tiempo real</p>
+                    <p class="monitoreoText">Recibi notificaciones en tiempo real sobre las mediciones</p>
+                </div>     
+            </div>
+        </div>
+        
+    </div>
+    <div class="col rightSideLogin">
+        <div class="formLogin">
+            <div class="formTitle">
+                <h3>Portal de monitoreo</h3>
+                <h6>Iniciar sesión</h6>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <div class="emailDiv">
+                        <p>Email</p>
+                        <input class="loginInput form-control" type="username" formControlName="username">
+                    </div>
+                    <div class="passwordDiv">
+                        <input class="loginInput form-control" type="password" formControlName="password">
+                        <img src="/assets/images/eye.svg" alt="">
+                    </div>
+                </div>
+                <div class="formFooter">
+                    <a href="">¿Olvidaste tu contraseña?</a>
+                    <input type="submit" value="Log In" method="post" class="btn">
+                </div>
+            </form>
+            
+            <span>Protegido por reCAPTCHA y sujeto a la Política de Privacidad y Condiciones.</span>
+        </div>
+    </div>
+</div>
