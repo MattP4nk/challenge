@@ -77,9 +77,6 @@ export class DashboardComponent {
 
   async getPlants(request: CommsDto) {
     await this.commService.commsManager(request).subscribe((data) => {
-      if(data.status.startsWith("ILLEGAL")){
-        this.route.navigate(['login']);
-      }
       for (let item of data.pack) {
         let plant: PlantModel = item;
         this.totalReadings += plant.totalReadings;
@@ -110,7 +107,6 @@ export class DashboardComponent {
   async createSensor() {
     this.requestNewSensor.sensor= this.sensorForm.value
     this.requestNewSensor.sensor!.plantId = Number((document.getElementById("IdField") as HTMLInputElement).value)
-    console.log((document.getElementById("IdField") as HTMLInputElement).value);
     await this.commService.commsManager(this.requestNewSensor).subscribe((data) =>{
       let output: HTMLParagraphElement = document.createElement('p');
       output.setAttribute(
@@ -131,7 +127,6 @@ export class DashboardComponent {
 
   async createPlant() {
     this.requestNewPlant.plant = this.plantForm.value
-    console.log(this.requestNewPlant)
     await this.commService.commsManager(this.requestNewPlant).subscribe((data) =>{
       console.log(data)
       let output: HTMLParagraphElement = document.createElement('p');
@@ -158,6 +153,7 @@ export class DashboardComponent {
         location.reload();
       }else{
         console.log(data.status)
+        this.route.navigate(['login']);
       }
     })
     }
