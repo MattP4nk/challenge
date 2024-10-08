@@ -34,7 +34,7 @@ export class LoginComponent {
     await this.CommsService.commsManager(this.request).subscribe((data) =>{
       if (data.token != undefined){
         this.Storage.set("key", data.token)
-        this.route.navigate([''])
+        this.route.navigate(['dashboard'])
       }
     });
   }
