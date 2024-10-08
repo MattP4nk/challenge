@@ -61,6 +61,9 @@
         <button class="btn" (click)="openPlantCreator()">
           + Crear nueva planta
         </button>
+        <button class="btn" (click)="getReadings()">
+          + Obtener nuevas mediciones
+        </button>
       </div>
       <div class="contenidoTabla">
         <div class="columNames">
@@ -340,9 +343,9 @@
             <input
               class="sensorInput form-control"
               id="IdField"
-              type="number"
               [value]="plantId"
-              formControlName="plant_id">
+              formControlName="plant_id"
+              readonly>
             <p>tipo de sensor</p>
             <select class="sensorInput form-control"
             type="type"

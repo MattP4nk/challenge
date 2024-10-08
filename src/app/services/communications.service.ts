@@ -12,7 +12,7 @@ export class CommunicationsService {
     private storage: LocalStorageService
   ) { }
 
-  commsUrl = "http://localhost:8080/communiations"
+  commsUrl = "https://back-xq2e.onrender.com/communiations"
 
   commsManager(request: CommsDto){
     if ( this.storage.get("key") != null){

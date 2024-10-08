@@ -57,6 +57,10 @@ export class DashboardComponent {
     area: 'plants_sensors',
     command: 'addSensor'
   }
+  requestReadings: CommsDto = {
+    area: 'plants_sensors',
+    command: "updateValues"
+  }
 
 
   async ngOnInit() {
@@ -95,7 +99,8 @@ export class DashboardComponent {
 
   async createSensor() {
     this.requestNewSensor.sensor= this.sensorForm.value
-    console.log(this.sensorForm.valueChanges);
+    this.requestNewSensor.sensor!.plantId = Number((document.getElementById("IdField") as HTMLInputElement).value)
+    console.log((document.getElementById("IdField") as HTMLInputElement).value);
     await this.commService.commsManager(this.requestNewSensor).subscribe((data) =>{
       let output: HTMLParagraphElement = document.createElement('p');
       output.setAttribute(
@@ -135,6 +140,17 @@ export class DashboardComponent {
       
     });
   }
+
+
+  async getReadings() {
+    await this.commService.commsManager(this.requestReadings).subscribe((data) => {
+      if(data.status == "OK"){
+        location.reload();
+      }else{
+        console.log(data.status)
+      }
+    })
+    }
 
   async getSensors(request: CommsDto){
     await this.commService.commsManager(request).subscribe((data) => {

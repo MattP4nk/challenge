@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuardService } from './services/login-guard.service';
 
 export const routes: Routes = [
-    {path: '', component: DashboardComponent, canActivate:[LoginGuardService]},
-    {path: 'login', component: LoginComponent}
+    {path: 'dashboard', component: DashboardComponent, canActivate:[LoginGuardService]},
+    {path: 'login', component: LoginComponent},
+    {path: '', component: LoginComponent}
 ];
