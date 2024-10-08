@@ -5,6 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommsDto } from '../Dtos/Dtos';
 import { PlantModel, Records, SensorModel } from '../models/Models';
 import { CommunicationsService } from '../services/communications.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,9 @@ export class DashboardComponent {
 
   plantForm: FormGroup;
   sensorForm: FormGroup;
-  constructor(private commService: CommunicationsService) {
+  constructor(
+    private commService: CommunicationsService,
+    private Storage: LocalStorageService) {
     this.plantForm = new FormGroup({
       name: new FormControl(),
       country: new FormControl()
@@ -34,6 +37,7 @@ export class DashboardComponent {
   totalReadings: number = 0;
   totalWarnings: number = 0;
   totalRedAlerts: number = 0;
+  userName: string = this.Storage.get("user")!
 
   displayPlantCreator = "none";
   displaySensorCreator = "none";

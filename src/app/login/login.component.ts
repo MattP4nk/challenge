@@ -33,6 +33,7 @@ export class LoginComponent {
     this.request.credentials = this.loginForm.value
     await this.CommsService.commsManager(this.request).subscribe((data) =>{
       if (data.token != undefined){
+        this.Storage.set("user", data.pack.username)
         this.Storage.set("key", data.token)
         this.route.navigate(['dashboard'])
       }
