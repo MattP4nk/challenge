@@ -37,7 +37,7 @@ export class DashboardComponent {
   totalReadings: number = 0;
   totalWarnings: number = 0;
   totalRedAlerts: number = 0;
-  userName: string = this.Storage.get("user")!
+  username: string|null = this.Storage.get("user")
 
   displayPlantCreator = "none";
   displaySensorCreator = "none";
