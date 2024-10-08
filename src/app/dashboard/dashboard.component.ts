@@ -63,7 +63,8 @@ export class DashboardComponent {
   }
   requestReadings: CommsDto = {
     area: 'plants_sensors',
-    command: "updateValues"
+    command: "updateValues",
+    target: "all"
   }
 
 
