@@ -16,7 +16,9 @@ export class CommunicationsService {
 
   commsManager(request: CommsDto){
     console.log(request.command)
-    if ( this.storage.get("key") != null){
+    if ( this.storage.get("key") == null || this.storage.get("key") == undefined ){
+      console.log("Guest")
+    } else {
       request.key = this.storage.get("key")!;
     }
     return this.httpClient.post<AnswerDto>(this.commsUrl, request);
