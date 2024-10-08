@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommsDto } from '../Dtos/Dtos';
 import { PlantModel, Records, SensorModel } from '../models/Models';
 import { CommunicationsService } from '../services/communications.service';
@@ -20,7 +21,8 @@ export class DashboardComponent {
   sensorForm: FormGroup;
   constructor(
     private commService: CommunicationsService,
-    private Storage: LocalStorageService) {
+    private Storage: LocalStorageService,
+    private route: Router) {
     this.plantForm = new FormGroup({
       name: new FormControl(),
       country: new FormControl()
@@ -75,6 +77,9 @@ export class DashboardComponent {
 
   async getPlants(request: CommsDto) {
     await this.commService.commsManager(request).subscribe((data) => {
+      if(data.status.startsWith("ILLEGAL")){
+        this.route.navigate(['login']);
+      }
       for (let item of data.pack) {
         let plant: PlantModel = item;
         this.totalReadings += plant.totalReadings;
