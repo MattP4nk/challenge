@@ -15,6 +15,7 @@ export class CommunicationsService {
   commsUrl = "https://back-xq2e.onrender.com/communiations"
 
   commsManager(request: CommsDto){
+    console.log(request.command)
     if ( this.storage.get("key") != null){
       request.key = this.storage.get("key")!;
     }
